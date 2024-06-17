@@ -85,6 +85,7 @@
 #font-selector > option,
 #font-size-selector > option {
   background-color: white;
+  /* border-radius: 5px solid transparent; */
 }
 
 .search {
@@ -139,4 +140,35 @@
 }
 .underline {
   text-decoration: underline;
+}
+
+.math-position {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid lightgray;
+  outline-color: #1e7c41;
+}
+#position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  min-width: 52px;
+  background-color: white;
+}
+
+#math {
+  display: flex;
+}
+#fx-image {
+  background-color: white;
+  margin-right: 10px;
+}
+#formulas {
+  background-color: white;
+}
+#color-picker,
+#bg-color-picker {
+  opacity: 0;
 }
