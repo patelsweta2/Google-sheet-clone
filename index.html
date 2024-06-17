@@ -36,11 +36,300 @@
               </li>
             </ul>
           </div>
-          <div></div>
-          <div></div>
+          <div class="menuOption" style="background-color: #f9fbfd">
+            <ul id="menuOptionList">
+              <li>
+                <div id="cut" class="material-icons" onClickCut="">
+                  content_cut
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -5px"
+                >
+                  cut
+                </div>
+              </li>
+              <li>
+                <div id="copy" class="material-icons" onClickCopy="">
+                  content_copy
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -5px"
+                >
+                  Copy
+                </div>
+              </li>
+              <li>
+                <div id="paste" class="material-icons" onClickPaste="">
+                  content_paste
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -5px"
+                >
+                  Paste
+                </div>
+              </li>
+              <li>
+                <div class="vertical-line" style="padding: 0"></div>
+              </li>
+              <li style="background-color: #edf2fa">
+                <div
+                  class="material-icons"
+                  style="background-color: #edf2fa; display: flex"
+                >
+                  <select style="width: 100px" id="font-selector">
+                    <option value="open Sans">Open Sans</option>
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="Verdana, sans-serif">Verdana</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value='"Times New Roman", serif'>
+                      Times New Roman
+                    </option>
+                    <option value="'Courier New', monospace">
+                      Courier New
+                    </option>
+                  </select>
+                </div>
+              </li>
+              <li style="background-color: #edf2fa">
+                <div
+                  class="material-icons"
+                  style="background-color: #edf2fa; display: flex"
+                >
+                  <select style="width: 70px" id="font-size-selector">
+                    <option value="13px">14px</option>
+                    <option value="12px">12px</option>
+                    <option value="16px">16px</option>
+                    <option value="20px">20px</option>
+                    <option value="24px">24px</option>
+                    <option value="28px">28px</option>
+                    <option value="30px">30px</option>
+                    <option value="32px">32px</option>
+                  </select>
+                </div>
+              </li>
+              <li>
+                <div class="vertical-line" style="padding: 0"></div>
+              </li>
+              <li style="position: relative">
+                <div id="bold" class="material-icons" onclick="">
+                  format_bold
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -10px"
+                >
+                  Bold
+                </div>
+              </li>
+              <li style="position: relative">
+                <div id="italic" class="material-icons" onclick="">
+                  format_italic
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -10px"
+                >
+                  Italic
+                </div>
+              </li>
+              <li style="position: relative">
+                <div id="underline" class="material-icons" onclick="">
+                  format_underlined
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -25px"
+                >
+                  Underline
+                </div>
+              </li>
+              <li style="position: relative">
+                <div
+                  id="leftAlign"
+                  data-value="start"
+                  class="material-icons"
+                  onclick=""
+                >
+                  format_align_left
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -30px"
+                >
+                  Align Left
+                </div>
+              </li>
+              <li style="position: relative">
+                <div
+                  id="centerAlign"
+                  data-value="center"
+                  class="material-icons"
+                  onclick=""
+                >
+                  format_align_center
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -30px"
+                >
+                  Center Align
+                </div>
+              </li>
+              <li style="position: relative">
+                <div
+                  id="rightAlign"
+                  data-value="right"
+                  class="material-icons"
+                  onclick=""
+                >
+                  format_align_right
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -10px"
+                >
+                  Right Align
+                </div>
+              </li>
+              <li>
+                <div class="vertical-line" style="padding: 0"></div>
+              </li>
+              <li style="position: relative">
+                <div id="text-color" class="" style="">
+                  <label for="color-picker">
+                    <span class="material-icons">format_color_text</span>
+                  </label>
+                  <input
+                    type="color"
+                    name=""
+                    id="color-picker"
+                    style="width: 0px; height: 0px"
+                    class="font-color-prop"
+                    onchange=""
+                  />
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -30px"
+                >
+                  Text Color
+                </div>
+              </li>
+              <li style="position: relative">
+                <div class="" id="bgcolor-picker">
+                  <label for="bg-color-picker">
+                    <span class="material-icons">format_color_fill</span>
+                  </label>
+                  <input
+                    type="color"
+                    name=""
+                    id="bg-color-picker"
+                    style="width: 0; height: 0"
+                    onchange=""
+                  />
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -50px"
+                >
+                  Background Color
+                </div>
+              </li>
+              <li>
+                <div
+                  class="material-icons"
+                  id="uploadElement"
+                  style="font-size: 20px"
+                >
+                  cloud_upload
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -10px"
+                >
+                  Upload
+                </div>
+              </li>
+              <li>
+                <div class="material-icons" style="font-size: 20px" onclick="">
+                  cloud_download
+                </div>
+                <div
+                  class="hoverSuggestion"
+                  style="padding: 5px 10px; left: -10px"
+                >
+                  Download
+                </div>
+              </li>
+              <!-- search  -->
+              <li>
+                <div class="vertical-line" style="padding: 0"></div>
+              </li>
+              <li
+                style="
+                  position: relative;
+                  display: flex;
+                  background-color: #edf2fa;
+                "
+                id="search"
+              >
+                <div
+                  id="functions"
+                  class="material-icons"
+                  onclick=""
+                  style="background: transparent"
+                >
+                  search
+                </div>
+                <div
+                  contenteditable="true"
+                  class="search"
+                  id="searchInput"
+                  style="padding-left: 10px"
+                >
+                  Find in sheet
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="math-position">
+            <div id="position">Null</div>
+            <div class="vertical-line" style="padding: 0.5px"></div>
+            <div id="math" style="align-items: center; max-width: 100vw">
+              <img
+                src="fx.png"
+                alt="img"
+                id="fx-image"
+                width="20px"
+                style="padding: 10px"
+              />
+              <div class="vertical-line" style="padding: 0.5px"></div>
+              <div
+                style="
+                  width: 100vw;
+                  box-sizing: border-box;
+                  padding-left: 10px;
+                  padding-right: 10px;
+                  outline: none;
+                  overflow-y: scroll;
+                  max-height: 25px;
+                  /* scroll-padding: 100px; */
+                "
+                contenteditable="true"
+                id="formulas"
+                class="expression"
+              ></div>
+            </div>
+          </div>
         </div>
       </header>
+
       <div class="dropdown"></div>
+      <!-- footer  -->
+
       <div id="footer">
         <div class="material-icons" id="addSheets">add</div>
         <div class="sheets" id="sheets"></div>

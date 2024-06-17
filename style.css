@@ -24,6 +24,7 @@
   width: 100vw;
   color: #fff;
   align-items: center;
+  /* border-bottom: 1px solid #1e7c41; */
 }
 
 #Home {
@@ -40,4 +41,29 @@
   background-color: #124f28;
   border-radius: 1px;
   cursor: pointer;
+}
+
+#menuOptionList {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  color: #202124;
+  border-radius: 7px;
+  background-color: #edf2fa;
+  padding: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.upperIndexOption {
+  display: flex;
+}
+.sheetOption {
+  display: flex;
+  flex-direction: row;
+}
+#menuOptionList > li {
+  padding: 2px 0px;
+  padding-top: 8px;
+  margin-left: 10px;
+  position: relative;
 }
