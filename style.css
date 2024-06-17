@@ -13,3 +13,31 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+#indexOptionList {
+  background-color: #1e7c41;
+  width: 100vw;
+  color: #fff;
+  align-items: center;
+}
+
+#Home {
+  background-color: rgb(237, 242, 250);
+  color: #1e7c41;
+}
+
+#indexOptionList > li {
+  margin-left: 3px;
+  padding: 8px 14px;
+  font-size: 16px;
+}
+#indexOptionList :hover {
+  background-color: #124f28;
+  border-radius: 1px;
+  cursor: pointer;
+}
