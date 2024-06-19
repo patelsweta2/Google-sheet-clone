@@ -107,3 +107,8 @@ function createInsideGrid() {
   data.push(newData);
 }
 addSheets.addEventListener("click", createGrid);
+
+function drop(e) {
+  e.nextElementSibling.classList.toggle("show");
+  dropdownContent = e.nextElementSibling;
+}
