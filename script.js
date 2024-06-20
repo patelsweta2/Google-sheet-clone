@@ -93,6 +93,9 @@ function createInsideGrid() {
       } else {
         cell.contentEditable = true;
         cell.id = String.fromCharCode(i) + num;
+        // cell.addEventListener("focus", onCellFocus);
+        // cell.addEventListener("blur", onCellBlur);
+        // cell.addEventListener("input", onCellInput);
         rowData.push(cell);
       }
       row.appendChild(cell);
@@ -109,7 +112,7 @@ function createInsideGrid() {
 
 // Attach event listener to the addSheets button
 addSheets.addEventListener("click", () => createGrid(0));
-
+let dropdownContent;
 function drop(e) {
   e.nextElementSibling.classList.toggle("show");
   dropdownContent = e.nextElementSibling;
@@ -173,7 +176,6 @@ function manageSheetState(index) {
     }
   }
 }
-let dropdownContent;
 
 function sortingFunction(e) {
   e.target.appendChild(popup);
@@ -189,4 +191,48 @@ function sortZtoA(e) {
   const columnName = e.parentNode.parentNode.parentNode;
   const index = columnName.id.charCodeAt(0) - 65;
   sortDataByColumnReverse(index);
+}
+
+searchInput.addEventListener("click", () => {
+  searchInput.style.color = "#000";
+  searchInput.innerText = "";
+
+  searchData = [];
+  searchIndex = [];
+  for (let i = 0; i < data[parseInt(currentSheetIndex) - 1].length; i++) {
+    for (let j = 0; j < data[parseInt(currentSheetIndex) - 1][0].length; j++) {
+      if (data[parseInt(currentSheetIndex) - 1][i][j].innerText != "") {
+        searchData.push(data[parseInt(currentSheetIndex) - 1][i][j]);
+        searchIndex.push(data[parseInt(currentSheetIndex) - 1][i][j].id);
+        // console.log(searchData);
+      }
+
+      data[parseInt(currentSheetIndex) - 1][i][j].style.backgroundColor =
+        "white";
+      data[parseInt(currentSheetIndex) - 1][i][j].style.border =
+        "2px solid #e1e1e1";
+      data[parseInt(currentSheetIndex) - 1][i][j].style.borderTopWidth = "0px";
+      data[parseInt(currentSheetIndex) - 1][i][j].style.borderRightWidth =
+        "0px";
+    }
+  }
+});
+
+searchInput.addEventListener("input", searchInCell);
+
+function searchInCell(e) {
+  for (let i = 0; i < searchData.length; i++) {
+    if (
+      searchData[i].innerText.includes(searchInput.innerText) &&
+      searchInput.innerText !== ""
+    ) {
+      searchData[i].style.backgroundColor = "#73d18f";
+      searchData[i].style.border = "2px solid #146c2e";
+    } else {
+      searchData[i].style.backgroundColor = "white";
+      searchData[i].style.border = "1px solid #e1e1e1";
+      searchData[i].style.borderTopWidth = "0px";
+      searchData[i].style.borderRightWidth = "0px";
+    }
+  }
 }
