@@ -11,7 +11,7 @@ let searchData;
 let searchIndex;
 
 const body = document.body;
-const addSheets = document.getElementById("addSheet");
+const addSheets = document.getElementById("addSheets");
 const sheetDiv = document.getElementById("sheets");
 
 let index = 1;
@@ -27,22 +27,25 @@ function createGrid(e) {
   grid.id = index++;
   grid.appendChild(gridHeader);
   sheets.push(grid);
-  //sheet create
 
+  // Create a new sheet tab
   const sheet = document.createElement("div");
-
-  //console.log(sheet.classList);
   sheet.innerText = `Sheet${sheets.length}`;
   sheet.className = "sheet";
-  //   sheet.addEventListener("click", sheetClicked);
+  sheet.addEventListener("click", sheetClicked);
   sheetDiv.appendChild(sheet);
+
+  // Show the first sheet initially
   if (e === 1) {
     main.insertBefore(sheets[0], footer);
     sheet.classList.add("sheet-active");
   }
+
   createInsideGrid();
 }
-createGrid(index);
+
+// Initialize the first grid
+createGrid(1);
 
 function createInsideGrid() {
   const srNo = document.createElement("div");
@@ -62,7 +65,6 @@ function createInsideGrid() {
     column.id = char;
     column.className = "column";
     const span = document.createElement("span");
-    // span.addEventListener("click", sortingFunction);
     span.className = "material-icons spanSort";
     span.innerText = "arrow_drop_down";
 
@@ -91,9 +93,6 @@ function createInsideGrid() {
       } else {
         cell.contentEditable = true;
         cell.id = String.fromCharCode(i) + num;
-        // cell.addEventListener("focus", onCellFocus);
-        // cell.addEventListener("blur", onCellBlur);
-        // cell.addEventListener("input", onCellInput);
         rowData.push(cell);
       }
       row.appendChild(cell);
@@ -101,14 +100,76 @@ function createInsideGrid() {
     newData.push(rowData);
     grid.appendChild(row);
   }
-  for (let i = 1; i < 100; i++) {
+
+  for (let i = 1; i <= 100; i++) {
     createRow(i);
   }
   data.push(newData);
 }
-addSheets.addEventListener("click", createGrid);
+
+// Attach event listener to the addSheets button
+addSheets.addEventListener("click", () => createGrid(0));
 
 function drop(e) {
   e.nextElementSibling.classList.toggle("show");
   dropdownContent = e.nextElementSibling;
+}
+
+function sortDataByColumn(columnIndex) {
+  const d = [];
+  for (let i = 0; i < 100; i++) {
+    const value =
+      data[parseInt(currentSheetIndex) - 1][i][columnIndex].innerText;
+    if (value !== "") d.push(value);
+  }
+  d.sort();
+  for (let j = 0; j < 100; j++) {
+    const cellId = String.fromCharCode(65 + j) + j;
+    console.log(cellId);
+    const cell = data[parseInt(currentSheetIndex) - 1][j][columnIndex];
+    cell.id = cellId;
+    cell.innerText = d[j] === undefined ? "" : d[j];
+  }
+}
+
+function sortDataByColumnReverse(columnIndex) {
+  const d = [];
+  for (let i = 0; i < 100; i++) {
+    const value =
+      data[parseInt(currentSheetIndex) - 1][i][columnIndex].innerText;
+    if (value !== "") d.push(value);
+  }
+  d.reverse();
+  for (let j = 0; j < 100; j++) {
+    const cellId = String.fromCharCode(65 + columnIndex + 1) + j;
+    console.log(cellId);
+    const cell = data[parseInt(currentSheetIndex) - 1][j][columnIndex];
+    cell.innerText = d[j] === undefined ? "" : d[j];
+  }
+}
+
+function sheetClicked(e) {
+  const index = e.target.innerText.replace("Sheet", "");
+  e.target.classList.add("sheet-active");
+  currentActiveSheet = "Sheet" + index;
+  console.log("clicked");
+  currentSheetIndex = index;
+  sheets[index - 1].style.display = "block";
+  for (let i = 0; i < sheets.length; i++) {
+    console.log(i != index - 1, i, index - 1);
+    if (i !== index - 1) {
+      sheets[i].style.display = "none";
+    }
+  }
+  main.insertBefore(sheets[index - 1], footer);
+  manageSheetState(currentActiveSheet);
+}
+
+function manageSheetState(index) {
+  const sheetList = document.getElementsByClassName("sheet");
+  for (let i = 0; i < sheetList.length; i++) {
+    if (sheetList[i].innerText !== index) {
+      sheetList[i].classList.remove("sheet-active");
+    }
+  }
 }

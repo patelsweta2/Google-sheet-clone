@@ -256,6 +256,7 @@
   border-radius: 0px;
   outline: none;
   box-sizing: border-box;
+  padding: 4px;
 }
 .sheet {
   display: flex;
@@ -358,6 +359,12 @@
   align-items: center;
   padding-left: 15px;
   background-color: #f9fbfd;
+}
+
+#addSheets:hover {
+  cursor: pointer;
+  background-color: #e8ebee;
+  border-radius: 50%;
 }
 .sheets {
   display: flex;
