@@ -173,3 +173,20 @@ function manageSheetState(index) {
     }
   }
 }
+let dropdownContent;
+
+function sortingFunction(e) {
+  e.target.appendChild(popup);
+}
+
+function sortAtoZ(e) {
+  const columnName = e.parentNode.parentNode.parentNode;
+  const index = columnName.id.charCodeAt(0) - 65;
+  sortDataByColumn(index);
+}
+
+function sortZtoA(e) {
+  const columnName = e.parentNode.parentNode.parentNode;
+  const index = columnName.id.charCodeAt(0) - 65;
+  sortDataByColumnReverse(index);
+}
