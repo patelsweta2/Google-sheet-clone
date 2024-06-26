@@ -150,8 +150,8 @@
                 <div
                   id="leftAlign"
                   data-value="start"
-                  class="material-icons"
-                  onclick=""
+                  class="material-icons text-align"
+                  onclick="onClickTextAlign(this)"
                 >
                   format_align_left
                 </div>
@@ -166,8 +166,8 @@
                 <div
                   id="centerAlign"
                   data-value="center"
-                  class="material-icons"
-                  onclick=""
+                  class="material-icons text-align"
+                  onclick="onClickTextAlign(this)"
                 >
                   format_align_center
                 </div>
@@ -182,8 +182,8 @@
                 <div
                   id="rightAlign"
                   data-value="right"
-                  class="material-icons"
-                  onclick=""
+                  class="material-icons text-align"
+                  onclick="onClickTextAlign(this)"
                 >
                   format_align_right
                 </div>
@@ -208,7 +208,7 @@
                     id="color-picker"
                     style="width: 0px; height: 0px"
                     class="font-color-prop"
-                    onchange=""
+                    onchange="onChangeTextColor(this)"
                   />
                 </div>
                 <div
@@ -228,7 +228,7 @@
                     name=""
                     id="bg-color-picker"
                     style="width: 0; height: 0"
-                    onchange=""
+                    onchange="onChangeBackgroundColor(this)"
                   />
                 </div>
                 <div
@@ -249,6 +249,7 @@
                 <div
                   class="hoverSuggestion"
                   style="padding: 5px 10px; left: -10px"
+                  onclick="exportFile(this)"
                 >
                   Upload
                 </div>

@@ -93,9 +93,9 @@ function createInsideGrid() {
       } else {
         cell.contentEditable = true;
         cell.id = String.fromCharCode(i) + num;
-        // cell.addEventListener("focus", onCellFocus);
-        // cell.addEventListener("blur", onCellBlur);
-        // cell.addEventListener("input", onCellInput);
+        cell.addEventListener("focus", onCellFocus);
+        cell.addEventListener("blur", onCellBlur);
+        cell.addEventListener("input", onCellInput);
         rowData.push(cell);
       }
       row.appendChild(cell);
