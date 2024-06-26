@@ -48,7 +48,7 @@ function onCellFocus(e) {
   };
   activeOp[activeCell.id] = activeOptionState;
   //   console.log("state", activeOptionState);
-  //   manageButtonState(computedStyle);
+  manageButtonState(computedStyle);
 
   if (previousCell) {
     previousCell.style.border = "1px solid #e1e1e1";
@@ -94,4 +94,146 @@ function onCellBlur(e) {
 
 function onCellInput(e) {
   formulas.innerText = e.target.innerText;
+}
+
+formulas.addEventListener("input", () => {
+  if (activeCell) {
+    activeCell.innerText = formulas.innerText;
+  }
+});
+
+function changeButtonState(button, selectedButton) {
+  if (selectedButton) {
+    button.classList.add("active-option");
+  } else {
+    button.classList.remove("active-option");
+  }
+
+  if (button.id === "font-selector") button.value = selectedButton;
+  if (button.id === "font-size-selector")
+    fontSizeSelector.value = selectedButton;
+}
+
+function manageButtonState(computedStyle) {
+  //bold
+  changeButtonState(bold, activeOptionState.isBoldSelected);
+  // italic
+  changeButtonState(italic, activeOptionState.isItalicSelected);
+  // underline
+  changeButtonState(underline, activeOptionState.isUnderLineSelected);
+  //fontFamily
+  changeButtonState(fontFamilySelector, activeOptionState.fontFamily);
+
+  // fontSize
+  changeButtonState(fontSizeSelector, activeOptionState.fontSize);
+
+  // textAlign
+  //   highlightTextAlignButton(activeOptionState.textAlign);
+}
+
+function onClickBold(boldButton) {
+  boldButton.classList.toggle("active-option");
+  if (activeCell) {
+    activeCell.classList.toggle("bold");
+    // console.log(activeCell)
+    activeOptionState.isBoldSelected = !activeOptionState.isBoldSelected;
+  }
+}
+
+function onClickItalic(italicButton) {
+  italicButton.classList.toggle("active-option");
+  if (activeCell) {
+    activeCell.classList.toggle("italic");
+    activeOptionState.isItalicSelected = !activeOptionState.isItalicSelected;
+  }
+}
+
+function onClickUnderline(underlineButton) {
+  underlineButton.classList.toggle("active-option");
+  if (activeCell) {
+    activeCell.classList.toggle("underline");
+    activeOptionState.isUnderLineSelected =
+      !activeOptionState.isUnderLineSelected;
+  }
+}
+
+function onClickCopy(copyButton) {
+  //   copiedCell = { ...activeCell };
+  copiedCell = document.createElement("div");
+  copiedCell.className = activeCell.className;
+  copiedCell.style = activeCell.style.cssText;
+  console.log(copiedCell.style.backgroundColor);
+  copiedCell.innerText = activeCell.innerText;
+}
+
+function onClickCut() {
+  copiedCell = document.createElement("div");
+  copiedCell.className = activeCell.className;
+  copiedCell.style = activeCell.style.cssText;
+  console.log(copiedCell.style.backgroundColor);
+  copiedCell.innerText = activeCell.innerText;
+  console.log(activeCell.style);
+  activeCell.style = document.createElement("div").cssText;
+
+  activeCell.style.fontWeight = "400";
+  activeCell.style.fontStyle = "normal";
+  activeCell.style.textDecoration = "none";
+  activeCell.innerText = "";
+}
+
+function onClickPaste(pasteButton) {
+  if (copiedCell) {
+    copiedCell.id = activeCell.id;
+    activeCell.className = copiedCell.className;
+    activeCell.style = copiedCell.style.cssText;
+    activeCell.innerText = copiedCell.innerText;
+  }
+  manageButtonState();
+}
+fontSizeSelector.addEventListener("change", () => {
+  if (activeCell) {
+    activeCell.style.fontSize = fontSizeSelector.value;
+    // console.log(fontSizeSelector.value, activeCell.fontSize);
+  }
+});
+
+fontFamilySelector.addEventListener("change", () => {
+  if (activeCell) {
+    activeCell.style.fontFamily = fontFamilySelector.value;
+    console.log(fontFamilySelector.value, activeCell.fontFamily);
+  }
+});
+
+function highlightTextAlignButton(textAlignValue) {
+  for (let i = 0; i < textAlignElements.length; i++) {
+    if (textAlignElements[i].getAttribute("data-value") === textAlignValue) {
+      textAlignElements[i].classList.add("active-option");
+    } else {
+      textAlignElements[i].classList.remove("active-option");
+    }
+  }
+}
+
+function onClickTextAlign(textAlignButton) {
+  let selectedValue = textAlignButton.getAttribute("data-value");
+
+  highlightTextAlignButton(selectedValue);
+
+  if (activeCell) {
+    activeCell.style.textAlign = selectedValue;
+    activeOptionState.textAlign = selectedValue;
+  }
+}
+function onChangeTextColor(textColorInput) {
+  if (activeCell) {
+    activeCell.style.color = textColorInput.value;
+    activeOptionState.textColor = textColorInput.value;
+  }
+}
+
+function onChangeBackgroundColor(textColorInput) {
+  if (activeCell) {
+    activeCell.style.backgroundColor = textColorInput.value;
+    activeOptionState.backgroundColor = textColorInput.value;
+  }
 }
