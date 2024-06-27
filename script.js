@@ -111,7 +111,7 @@ function createInsideGrid() {
 }
 
 // Attach event listener to the addSheets button
-addSheets.addEventListener("click", () => createGrid(0));
+addSheets.addEventListener("click", createGrid);
 let dropdownContent;
 function drop(e) {
   e.nextElementSibling.classList.toggle("show");
@@ -123,6 +123,7 @@ function sortDataByColumn(columnIndex) {
   for (let i = 0; i < 100; i++) {
     const value =
       data[parseInt(currentSheetIndex) - 1][i][columnIndex].innerText;
+
     if (value !== "") d.push(value);
   }
   d.sort();
