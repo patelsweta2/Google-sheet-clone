@@ -184,10 +184,14 @@ function onClickCut() {
 function onClickPaste(pasteButton) {
   if (copiedCell) {
     copiedCell.id = activeCell.id;
+    // copiedCell = document.createElement("div");
     activeCell.className = copiedCell.className;
     activeCell.style = copiedCell.style.cssText;
+    // console.log(copiedCell.style, activeCell.style);
     activeCell.innerText = copiedCell.innerText;
   }
+  // copiedCell = null;
+
   manageButtonState();
 }
 fontSizeSelector.addEventListener("change", () => {
