@@ -2,8 +2,7 @@
 
 This project is a clone of Google Sheets, created using HTML, CSS, and JavaScript. It provides several functionalities to mimic the behavior and features of the original Google Sheets application. Below are the key features and functionalities implemented in this project:
 
-## Screenshots
-![Home Page](./images/CloneSS.png)
+
 
 ## Features
 
