@@ -268,49 +268,49 @@ function exportFile() {
   link.remove();
 }
 
-function importFile(fileData) {
-  sheets.forEach((sheet) => sheet.remove());
-  sheets.length = 0;
-  data.length = 0;
+// function importFile(fileData) {
+//   sheets.forEach((sheet) => sheet.remove());
+//   sheets.length = 0;
+//   data.length = 0;
 
-  // parse the imported data
-  const importedData = JSON.parse(fileData);
+//   // parse the imported data
+//   const importedData = JSON.parse(fileData);
 
-  //Update the current sheet and data
-  currentActiveSheet = importedData.currentActiveSheet;
-  currentSheetIndex = importedData.currentSheetIndex;
-  data = importedData.data;
+//   //Update the current sheet and data
+//   currentActiveSheet = importedData.currentActiveSheet;
+//   currentSheetIndex = importedData.currentSheetIndex;
+//   data = importedData.data;
 
-  // Recreate sheets and their content
-  data.forEach((sheetData, sheetIndex) => {
-    createGrid(sheetIndex + 1);
-    sheetData.forEach((rowData, rowIndex) => {
-      rowData.forEach((cellData, colIndex) => {
-        const cell = data[sheetIndex][rowIndex][colIndex];
-        const cellId = String.fromCharCode(65 + colIndex) + rowIndex;
-        cell.id = cellId;
-        cell.innerText = cellData.innerText;
-        // Add any other properties or styles you need to restore
-      });
-    });
-  });
-  // Update the UI to reflect the imported state
-  manageSheetState(currentActiveSheet);
-}
+//   // Recreate sheets and their content
+//   data.forEach((sheetData, sheetIndex) => {
+//     createGrid(sheetIndex + 1);
+//     sheetData.forEach((rowData, rowIndex) => {
+//       rowData.forEach((cellData, colIndex) => {
+//         const cell = data[sheetIndex][rowIndex][colIndex];
+//         const cellId = String.fromCharCode(65 + colIndex) + rowIndex;
+//         cell.id = cellId;
+//         cell.innerText = cellData.innerText;
+//         // Add any other properties or styles you need to restore
+//       });
+//     });
+//   });
+//   // Update the UI to reflect the imported state
+//   manageSheetState(currentActiveSheet);
+// }
 
-let uploadElement = document.getElementById("uploadElement");
-uploadElement.addEventListener("click", function () {
-  let inputVal = document.createElement("input");
-  inputVal.setAttribute("type", "file");
-  inputVal.click();
+// let uploadElement = document.getElementById("uploadElement");
+// uploadElement.addEventListener("click", function () {
+//   let inputVal = document.createElement("input");
+//   inputVal.setAttribute("type", "file");
+//   inputVal.click();
 
-  inputVal.addEventListener("change", () => {
-    var fr = new FileReader();
-    let files = inputVal.files;
-    let filesObj = files[0];
-    fr.readAsText(filesObj);
-    fr.addEventListener("load", (e) => {
-      importFile(fr.result);
-    });
-  });
-});
+//   inputVal.addEventListener("change", () => {
+//     var fr = new FileReader();
+//     let files = inputVal.files;
+//     let filesObj = files[0];
+//     fr.readAsText(filesObj);
+//     fr.addEventListener("load", (e) => {
+//       importFile(fr.result);
+//     });
+//   });
+// });
